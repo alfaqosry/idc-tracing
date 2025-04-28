@@ -51,6 +51,11 @@ class User extends Authenticatable
         return $this->hasOne(Siswa::class);
     }
 
+    public function admin()
+    {
+        return $this->hasOne(Admin::class);
+    }
+
     public function petugasuks()
     {
         return $this->hasOne(Petugasuks::class);

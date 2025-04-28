@@ -111,6 +111,14 @@
                     <div data-i18n="Petugas UKS">Petugas UKS</div>
                 </a>
             </li>
+
+            <li class="menu-item">
+                <a href="{{ route('admin.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons ri-nurse-line"></i>
+                    <div data-i18n="Admin">Admin</div>
+                </a>
+            </li>
+            
             <li class="menu-item">
                 <a href="{{ route('petugaspukesmas.index') }}" class="menu-link">
                     <i class="menu-icon tf-icons ri-nurse-fill"></i>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Siswa;
 use App\Models\Sekolah;
 use App\Models\Suku;
@@ -10,6 +11,7 @@ use App\Models\Tesdiabetes;
 use App\Models\Petugaspukesmas;
 use App\Models\Petugasuks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -32,10 +34,10 @@ class ProfileController extends Controller
             $siswa = Petugasuks::with('user')->where('user_id', auth()->user()->id)->first();
         }elseif ($user->hasRole('idc')){
 
-            $siswa = Petugasuks::with('user')->where('user_id', auth()->user()->id)->first();
+            $siswa = Admin::with('user')->where('user_id', auth()->user()->id)->first();
         }
 
-    
+        dd($siswa);
 
         return view('pages.profile.index', compact('siswa', 'suku', 'sekolah', 'tes'));
     }

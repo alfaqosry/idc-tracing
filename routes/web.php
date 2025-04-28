@@ -12,6 +12,7 @@ use App\Http\Controllers\PetugasuksController;
 use App\Http\Controllers\PetugaspukesmasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriodeController;
+use App\Http\Controllers\AdminController;
 use App\Models\Petugasuks;
 use App\Models\Priode;
 use Illuminate\Support\Facades\Auth;
@@ -100,6 +101,21 @@ Route::post('/puskesmas/update/{id}',[ PuskesmasController::class, 'update'  ])-
 Route::get('/puskesmas/delete/{id}',[ PuskesmasController::class, 'destroy'  ])->name('puskesmas.delete');
 });
 
+Route::middleware('auth')->group(function () {
+
+    Route::get('/admin',[ AdminController::class, 'index'  ])->name('admin.index');
+    // Route::post('/siswa/store',[ SiswaController::class, 'store'  ])->name('siswa.store');
+    // Route::post('/siswa/import-siswa',[ SiswaController::class, 'importExcel'  ])->name('siswa.import');
+    // Route::post('/siswa/update/{id}',[ SiswaController::class, 'update'  ])->name('siswa.update');
+    // Route::get('/siswa/delete/{id}',[ SiswaController::class, 'destroy'  ])->name('siswa.delete');
+    // Route::get('/siswa/download-format',[ SiswaController::class, 'downloadFile'  ])->name('siswa.download');
+    
+    
+    // Route::get('/',[ DashboardController::class, 'index'  ])->name('dashboard.index');
+    
+    });
+
+    
 
 Route::middleware('auth')->group(function () {
 

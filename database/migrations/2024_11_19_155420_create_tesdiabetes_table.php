@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('tesdiabetes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('priode_id')->constrained('priodes')->onDelete('cascade');
             $table->string('tinggi_badan');
             $table->string('berat_badan');
             $table->string('tekanan_darah');
