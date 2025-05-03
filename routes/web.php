@@ -13,6 +13,7 @@ use App\Http\Controllers\PetugaspukesmasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PriodeController;
 use App\Http\Controllers\AdminController;
+use App\Models\Admin;
 use App\Models\Petugasuks;
 use App\Models\Priode;
 use Illuminate\Support\Facades\Auth;
@@ -104,10 +105,9 @@ Route::get('/puskesmas/delete/{id}',[ PuskesmasController::class, 'destroy'  ])-
 Route::middleware('auth')->group(function () {
 
     Route::get('/admin',[ AdminController::class, 'index'  ])->name('admin.index');
-    // Route::post('/siswa/store',[ SiswaController::class, 'store'  ])->name('siswa.store');
-    // Route::post('/siswa/import-siswa',[ SiswaController::class, 'importExcel'  ])->name('siswa.import');
-    // Route::post('/siswa/update/{id}',[ SiswaController::class, 'update'  ])->name('siswa.update');
-    // Route::get('/siswa/delete/{id}',[ SiswaController::class, 'destroy'  ])->name('siswa.delete');
+    Route::post('/admin/store',[ AdminController::class, 'store'  ])->name('admin.store');
+    Route::post('/admin/update/{id}',[ AdminController::class, 'update'  ])->name('admin.update');
+    Route::get('/admin/delete/{id}',[ AdminController::class, 'destroy'  ])->name('admin.delete');
     // Route::get('/siswa/download-format',[ SiswaController::class, 'downloadFile'  ])->name('siswa.download');
     
     

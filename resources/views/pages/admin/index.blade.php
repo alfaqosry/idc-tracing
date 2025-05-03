@@ -29,7 +29,7 @@
                                 </div>
                                 <button class="btn btn-secondary create-new btn-primary waves-effect waves-light"
                                     tabindex="0" aria-controls="DataTables_Table_0" data-bs-toggle="modal"
-                                    data-bs-target="#tambahsiswa" type="button"><span><i
+                                    data-bs-target="#tambahadmin" type="button"><span><i
                                             class="ri-add-line ri-16px me-sm-2"></i>
                                         <span class="d-none d-sm-inline-block">Tambah Admin</span></span></button>
 
@@ -77,21 +77,20 @@
                                     <td>{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td>
                                     <td>{{ $item->no_hp }}</td>
                                     <td>{{ $item->alamat }}</td>
-                                    {{-- <td >
+                                    <td >
 
                                         <div class="btn-toolbar demo-inline-spacing gap-2" role="toolbar"
                                             aria-label="Toolbar with button groups">
                                             <div class="btn-group" role="group" aria-label="First group">
                                                 <button type="button" class="btn btn-outline-secondary waves-effect text-success"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#editsiswa" data-bs-siswa="{{ $item }}"
-                                                data-bs-daerah="{{ $item->daerah }}"
+                                                data-bs-target="#editadmin" data-bs-admin="{{ $item }}"
                                                 data-bs-id="{{ $item->id }}">
                                                     <i class="tf-icons ri-edit-box-line"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-outline-secondary waves-effect text-danger"
                                                 data-bs-toggle="modal"
-                                                data-bs-target="#hapussiswa" data-bs-id="{{ $item->id }}">
+                                                data-bs-target="#hapusadmin" data-bs-id="{{ $item->id }}">
                                                     <i class="tf-icons ri-delete-bin-line"></i>
                                                 </button>
 
@@ -100,7 +99,7 @@
                                         </div>
 
                                        
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -127,7 +126,7 @@
 
 
                     </div>
-                    <form id="tambahSiswaForm" class="row g-5" method="POST" action="{{ route('siswa.store') }}"
+                    <form id="tambahSiswaForm" class="row g-5" method="POST" action="{{ route('admin.store') }}"
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -277,10 +276,10 @@
             </div>
         </div>
     </div>
-    <!--/ Tambah suku Siswa -->
 
-    <!-- edit Siswa -->
-    <div class="modal fade" id="editsiswa" tabindex="-1" aria-hidden="true">
+
+    <!-- edit Admin -->
+    <div class="modal fade" id="editadmin" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-simple modal-dialog-centered modal-edit-user">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -289,7 +288,7 @@
                         <h4 class="mb-2">Edit Admin</h4>
                         <p class="mb-6">Update data Admin</p>
                     </div>
-                    <form id="editSiswaForm" class="row g-5" method="POST" action=""
+                    <form id="editAdminForm" class="row g-5" method="POST" action=""
                         enctype="multipart/form-data">
                         {{ csrf_field() }}
 
@@ -408,25 +407,6 @@
                             </div>
                         </div>
                 
-                        <div class="col-md-6 mb-6">
-                            <div class="form-floating form-floating-outline">
-                                <select id="selectSuku" class="form-control @error('suku_id') is-invalid @enderror"
-                                    name="suku_id" data-allow-clear="true">
-                                    <option value="" disabled selected>Pilih Suku</option>
-                                    @foreach ($suku as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama_suku }}</option>
-                                    @endforeach;
-
-                                </select>
-                                @error('suku_id')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <label for="selectSuku">Suku</label>
-                            </div>
-                        </div>
-
                         <div class="col-12 col-md-6">
                             <div class="form-floating form-floating-outline">
                                 <input type="password" id="inputEditPassword" name="password"
@@ -454,19 +434,19 @@
             </div>
         </div>
     </div>
-    <!--/ Edit Siswa Modal -->
+    <!--/ Edit admin Modal -->
 
 
 
-    <!-- hapus Siswa -->
-    <div class="modal fade" id="hapussiswa" tabindex="-1" aria-hidden="true">
+    <!-- hapus admin -->
+    <div class="modal fade" id="hapusadmin" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-simple modal-dialog-centered modal-edit-user">
             <div class="modal-content">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="modal-body p-0">
                     <div class="text-center mb-6">
-                        <h4 class="mb-2">Hapus Data Siswaa</h4>
-                        <p class="mb-6">Apakah Anda yakin ingin menghapus data siswa ini ? </p>
+                        <h4 class="mb-2">Hapus Data Admin</h4>
+                        <p class="mb-6">Apakah Anda yakin ingin menghapus data Admin ini ? </p>
                     </div>
 
                     <div class="col-12 text-center d-flex flex-wrap justify-content-center gap-4 row-gap-4">
@@ -481,57 +461,26 @@
             </div>
         </div>
     </div>
-    <!--/ Edit Siswa Modal -->
+    <!--/ Hapus admin Modal -->
 
 
 
 
-    <!-- imporat Siswa -->
-    <div class="modal fade" id="importsekolah" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-simple modal-dialog-centered modal-edit-user">
-            <div class="modal-content">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="modal-body p-0">
 
-                    <form id="formimportsuku" class="row g-5" method="POST" action="{{ route('siswa.import') }}"
-                        enctype="multipart/form-data">
-                        {{ csrf_field() }}
-
-
-                        <div class="ol-12 col-md-12">
-                            <label for="formFile" class="form-label">Import data Siswa</label>
-                            <input class="form-control" type="file" name="file" id="formFile">
-                        </div>
-
-                        <div class="col-12 text-center d-flex flex-wrap justify-content-center gap-4 row-gap-4">
-                            <a href="{{ route('siswa.download') }}" class="btn btn-warning">Download Format</a>
-                            <button type="submit" class="btn btn-primary">Import</button>
-                            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                                aria-label="Close">
-                                Batal
-                            </button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-   
     <script src="{{ asset('aplikasi/material/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('aplikasi/material/assets/vendor/libs/select2/select2.js') }}"></script>
 
     <script src="{{ asset('aplikasi/material/assets/js/forms-selects.js') }}"></script>
 
     <script>
-        const modalEdit = document.getElementById('editsiswa')
+        const modalEdit = document.getElementById('editadmin')
         if (modalEdit) {
             modalEdit.addEventListener('show.bs.modal', event => {
                 // Button that triggered the modal
                 const button = event.relatedTarget
                 // Extract info from data-bs-* attributes
-                const siswaString = button.getAttribute('data-bs-siswa')
-                const siswa = JSON.parse(siswaString);
+                const adminString = button.getAttribute('data-bs-admin')
+                const admin = JSON.parse(adminString);
 
                 // console.log(siswa)
 
@@ -546,40 +495,33 @@
                 const selectJenisKelamin = modalEdit.querySelector('.modal-body #selectjeniskelamin');
                 const inputTempatLahir = modalEdit.querySelector('.modal-body #inputEditTempatLahir');
                 const inputTanggalLahir = modalEdit.querySelector('.modal-body #inputEditTanggalLahir');
-                const inputNisn = modalEdit.querySelector('.modal-body #inputEditNisn');
-                const inputTahunajaranmasuk = modalEdit.querySelector('.modal-body #inputEditTahunajaranmasuk');
                 const inputNoHp = modalEdit.querySelector('.modal-body #inputEditNoHp');
                 const inputEmail = modalEdit.querySelector('.modal-body #inputEditEmail');
                 const inputAlamat = modalEdit.querySelector('.modal-body #inputEditAlamat');
-                const selectSekolah = modalEdit.querySelector('.modal-body #selectSekolah');
-                const selectSuku = modalEdit.querySelector('.modal-body #selectSuku');
 
-                console.log(siswa.jenis_kelamin)
+                console.log(admin)
 
                 // modalTitle.textContent = `New message to ${sekolah}`
-                inputUsername.value = siswa.user.username
-                inputName.value = siswa.user.name
-                selectJenisKelamin.value = siswa.jenis_kelamin;
-                inputTempatLahir.value = siswa.tempat_lahir;
-                inputTanggalLahir.value = siswa.tanggal_lahir;
-                inputNisn.value = siswa.nisn;
-                inputTahunajaranmasuk.value = siswa.tahunajaranmasuk;
-                inputNoHp.value = siswa.no_hp;
-                inputEmail.value = siswa.user.email;
-                inputAlamat.value = siswa.alamat;
-                selectSekolah.value = siswa.sekolah_id;
-                selectSuku.value = siswa.suku_id;
+                inputUsername.value = admin.user.username
+                inputName.value = admin.user.name
+                selectJenisKelamin.value = admin.jenis_kelamin;
+                inputTempatLahir.value = admin.tempat_lahir;
+                inputTanggalLahir.value = admin.tanggal_lahir;
+                inputNoHp.value = admin.no_hp;
+                inputEmail.value = admin.user.email;
+                inputAlamat.value = admin.alamat;
 
 
+                console.log(inputAlamat.value)
 
-
-                const form = document.getElementById('editSiswaForm');
+                const form = document.getElementById('editAdminForm');
                 console.log(form)
-                form.action = `/siswa/update/${siswa.user.id}`;
+                form.action = `/admin/update/${admin.user.id}`; 
+                 
             })
         }
 
-        const modalHapus = document.getElementById('hapussiswa')
+        const modalHapus = document.getElementById('hapusadmin')
         if (modalHapus) {
             modalHapus.addEventListener('show.bs.modal', event => {
                 // Button that triggered the modal
@@ -600,14 +542,14 @@
 
                 console.log(tombolHapus);
 
-                tombolHapus.href = `/siswa/delete/${id}`;
+                tombolHapus.href = `/admin/delete/${id}`;
             })
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             @if ($errors->any())
                 // Trigger modal to show if there are errors
-                var myModal = new bootstrap.Modal(document.getElementById('tambahsiswa'), {
+                var myModal = new bootstrap.Modal(document.getElementById('tambahadmin'), {
                     keyboard: false
                 });
                 myModal.show();
